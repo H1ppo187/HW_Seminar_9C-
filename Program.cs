@@ -3,14 +3,35 @@
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-Console.Write("Введите число: ");
+// Console.Write("Введите число: ");
+// int N = int.Parse(Console.ReadLine()!);
+
+// Console.WriteLine(PrintNumbers(N, 1));
+
+// // Метод
+// string PrintNumbers(int start, int end)
+// {
+//     if (start == end) return start.ToString();
+//     return (start + " " + PrintNumbers(start - 1, end));
+// }
+
+// Задача 66: Выполнить с помощью рекурсии.Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+
+
+Console.Write("Введите число M: ");
+int M = int.Parse(Console.ReadLine()!);
+Console.Write("Введите число N: ");
 int N = int.Parse(Console.ReadLine()!);
-
-Console.WriteLine(PrintNumbers(N, 1));
-
-// Метод
-string PrintNumbers(int start, int end)
+Console.WriteLine(SumNumbers(M, N));
+ 
+int SumNumbers(int M, int N)
 {
-    if (start == end) return start.ToString();
-    return (start + " " + PrintNumbers(start - 1, end));
+    if (M == 0) return (N * (N + 1)) / 2;            
+    else if (N == 0) return (M * (M + 1)) / 2;     
+    else if (M == N) return M;                       
+    else if (M < N) return N + SumNumbers(M, N - 1); 
+    return N + SumNumbers(M, N + 1);            
 }
